@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:41 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/13 23:15:42 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/14 23:23:58 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
  #ifndef BUFFER_SIZE
- #define BUFFER_SIZE 10000000000
+ #define BUFFER_SIZE 100
  #endif
 
 # include <stdio.h>
