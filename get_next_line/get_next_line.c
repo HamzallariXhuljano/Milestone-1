@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:13:13 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/14 23:28:28 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/15 01:33:11 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char	*read_ln(int fd, char *str)
 		return (NULL);
 	while (1)
 	{
+		nbr_read = read(fd, buffer, BUFFER_SIZE);
 		if (nbr_read <= 0)
 			return (free(buffer), free(temp),NULL);
-		nbr_read = read(fd, buffer, BUFFER_SIZE);
 		temp = ft_strjoin(str, buffer);
 		str = temp;
 		if (ft_strchr(str, '\n'))
@@ -43,7 +43,8 @@ char	*get_next_line(int fd)
 {
 	static char *str;
 	char *line;
-
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!str)
 		str = ft_strdup("");
 	line = read_ln(fd, str);
