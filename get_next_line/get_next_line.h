@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:41 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/13 23:15:42 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:11:22 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
  #ifndef BUFFER_SIZE
- #define BUFFER_SIZE 10000000000
+ #define BUFFER_SIZE 10
  #endif
 
 # include <stdio.h>
@@ -28,5 +28,6 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
+char	*get_next_line(int fd);
 
 #endif

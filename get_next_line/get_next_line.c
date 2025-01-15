@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:13:13 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/14 00:07:27 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:11:31 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,17 @@ char	*get_next_line(int fd)
 		return(free(str), NULL);
 	return (line);
 }
-int main()
-{
-	int	fd = open("text.txt", O_RDWR);
-	char *line;
+// int main()
+// {
+// 	//int	fd = open("text.txt", O_RDWR);
+// 	char *line;
 
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
-}
+// 	while ((line = get_next_line(0)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	free(line);
+// 	//close(fd);
+// 	return (0);
+// }
