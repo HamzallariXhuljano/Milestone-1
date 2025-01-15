@@ -26,9 +26,9 @@ char	*read_ln(int fd, char *str)
 		return (NULL);
 	while (1)
 	{
-		nbr_read = read(fd, buffer, BUFFER_SIZE);
 		if (nbr_read <= 0)
 			return (free(buffer), free(temp),NULL);
+		nbr_read = read(fd, buffer, BUFFER_SIZE);
 		temp = ft_strjoin(str, buffer);
 		str = temp;
 		if (ft_strchr(str, '\n'))
@@ -43,8 +43,7 @@ char	*get_next_line(int fd)
 {
 	static char *str;
 	char *line;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+
 	if (!str)
 		str = ft_strdup("");
 	line = read_ln(fd, str);
@@ -52,16 +51,18 @@ char	*get_next_line(int fd)
 		return(free(str), NULL);
 	return (line);
 }
-int main()
-{
-	//int	fd = open("text.txt", O_RDWR);
-	char *line;
+// int main()
+// {
+// 	//int	fd = open("text.txt", O_RDWR);
+// 	char *line;
 
-	while ((line = get_next_line(0)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	//close(fd);
-	return (0);
-}
+// 	while ((line = get_next_line(0)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	free(line);
+// 	//close(fd);
+// 	return (0);
+// }
+
