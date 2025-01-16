@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    get_next_line_utils.c                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:09 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/13 23:15:10 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/16 02:39:17 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i])
-	{
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
 		i++;
-	}
 	return (i);
 }
 
@@ -34,7 +34,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	str = malloc((len_s1 + len_s2) * sizeof(char) + 1);
+	str = calloc((len_s1 + len_s2),1);
 	if (str == NULL)
 		return (NULL);
 	i = 0;
@@ -74,7 +74,7 @@ char	*ft_strdup(const char *s)
 	char	*str;
 	int		i;
 
-	str = malloc(ft_strlen(s) * sizeof(char) + 1);
+	str = ft_calloc(ft_strlen(s), 1);
 	if (str == NULL)
 	{
 		return (NULL);
