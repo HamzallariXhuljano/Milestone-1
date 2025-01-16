@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:09 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/16 18:39:09 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:55:30 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	len_s1 = 0;
 	len_s2 = 0;
+	str = NULL;
 	if (s1)
 		len_s1 = ft_strlen(s1);
 	if (s2)
@@ -82,26 +83,14 @@ char	*ft_strdup(const char *s)
 	str[len] = '\0';
 	return (str);
 }
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*input;
-	size_t	result;
 	size_t	i;
 
 	i = 0;
-	result = 0;
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	result = nmemb * size;
-	if (result / nmemb != size)
-		return (NULL);
-	input = malloc(nmemb * size);
-	if (input == NULL)
-		return (NULL);
-
-	while (i < result)
+	while (i < n)
 	{
-			input[i++] = '\0';
+		*((unsigned char *)s + i) = '\0';
+		i++;
 	}
-	return (input);
 }

@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:13:13 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/16 18:40:59 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/17 00:08:46 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,15 @@ static char	*read_ln(int fd, char *str)
 	ssize_t	nbr_read;
 	char *temp;
 
-	// if (!str)
-	// 	str = NULL;
-	buffer = ft_calloc(BUFFER_SIZE + 1, 1);
-	// nbr_read = 0;
-	// if(!buffer)
-	// 	return (NULL);
+	temp = 0;
+	buffer = malloc(BUFFER_SIZE + 1);
+	if(!buffer)
+		return (NULL);
 	while (1)
 	{
+		ft_bzero(buffer, BUFFER_SIZE + 1);
 		nbr_read = read(fd, buffer, BUFFER_SIZE);
-		if (nbr_read ==-1)
+		if (nbr_read == -1)
 			return (free(buffer), free(str),NULL);
 		if (nbr_read == 0)
 			break;
@@ -58,7 +57,7 @@ static char	*read_ln(int fd, char *str)
 		if (ft_strchr(str, '\n'))
 			break;
 	}
-	return ( free(buffer),str);
+	return (free(buffer),str);
 }
 static char	*make_ln(char *str)
 {
@@ -94,17 +93,21 @@ static char	*prev (char *str)
 	while (str[i] && str[i] != '\n' )
 		i++;
 	if (str[i] == '\0')
-		return(free(str), NULL);
+		return(free(str), str = NULL, NULL);
 	tmp = ft_strdup(&str[i+1]);
 	if (!tmp)//
-		return(free(str), NULL);//
-	return(free(str), tmp);
+		return(free(str), str = NULL, NULL);
+	free (str);
+	str = NULL;
+	return(tmp);
 }
 
 char	*get_next_line(int fd)
 {
 	static char *str;
 	char *line;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	str = read_ln(fd, str);
 	if (!str)
 		return (NULL);
@@ -119,7 +122,7 @@ int	main(void)
 	int	fd;
 	char *line;
 
-	fd = open("text.txt", O_RDWR);
+	fd = open("txt.txt", O_RDWR);
 	// line = get_next_line(fd);
 	// printf("%s", line);
 	// free(line);
@@ -133,6 +136,7 @@ int	main(void)
 		free(line);
 	}
 	close(fd);
+	get_next_line(fd);
 	return (0);
 }
 

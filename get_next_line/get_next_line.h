@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:41 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/16 17:16:29 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:49:01 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
  #ifndef BUFFER_SIZE
- #define BUFFER_SIZE 10
+ #define BUFFER_SIZE 42
  #endif
 
 # include <stdio.h>
@@ -30,6 +30,7 @@ char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*get_next_line(int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	ft_bzero(void *s, size_t n);
 
 #endif
 
