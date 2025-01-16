@@ -6,10 +6,18 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:13:13 by xhamzall          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/15 18:23:51 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+=======
+/*   Updated: 2025/01/16 02:45:25 by xhamzall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 #include "get_next_line.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -38,8 +46,13 @@ static char	*read_ln(int fd, char *str)
 	char *temp;
 
 	if (!str)
+<<<<<<< HEAD
 		str = ft_strdup("");
 	buffer =ft_calloc((BUFFER_SIZE + 1 ), 1);
+=======
+		str = NULL;
+	buffer =calloc(BUFFER_SIZE + 1 ,1);
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 	temp = NULL;
 	nbr_read = 0;
 	if(!buffer)
@@ -56,7 +69,11 @@ static char	*read_ln(int fd, char *str)
 		if (ft_strchr(str, '\n'))
 			break;
 	}
+<<<<<<< HEAD
 	return (free (temp), free(buffer),str);
+=======
+	return ( free(buffer),str);
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 }
 static char	*make_ln(char *str)
 {
@@ -99,8 +116,13 @@ char	*get_next_line(int fd)
 	char *line;
 
 	str = read_ln(fd, str);
+<<<<<<< HEAD
 	if(!str)
 		return(NULL);
+=======
+	if (!str)
+		str = ft_strdup("");
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 	line = make_ln(str);
 	if(!line || line[0] == 0)
 		return(free(str), free (line), NULL);
@@ -121,4 +143,35 @@ char	*get_next_line(int fd)
 	close(fd);
 	return (0);
 }
+<<<<<<< HEAD
+=======
+// int main()
+// {
+// 	//int	fd = open("text.txt", O_RDWR);
+// 	char *line;
+
+// 	while ((line = get_next_line(0)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	free(line);
+// 	//close(fd);
+// 	return (0);
+// }
+// int main()
+// {
+// 	//int	fd = open("text.txt", O_RDWR);
+// 	char *line;
+
+// 	while ((line = get_next_line(0)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	free(line);
+// 	//close(fd);
+// 	return (0);
+// }
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 

@@ -6,7 +6,11 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:41 by xhamzall          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/15 17:04:55 by xhamzall         ###   ########.fr       */
+=======
+/*   Updated: 2025/01/15 00:43:54 by xhamzall         ###   ########.fr       */
+>>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +36,4 @@ char	*get_next_line(int fd);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
+
