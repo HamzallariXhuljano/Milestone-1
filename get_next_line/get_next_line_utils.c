@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:09 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/16 02:39:17 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:39:09 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,24 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	len_s1;
 	size_t	len_s2;
-	size_t	i;
-	size_t	j;
 	char	*str;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	str = calloc((len_s1 + len_s2),1);
+	len_s1 = 0;
+	len_s2 = 0;
+	if (s1)
+		len_s1 = ft_strlen(s1);
+	if (s2)
+		len_s2 = ft_strlen(s2);
+	str = malloc((len_s1 + len_s2) + 1);
 	if (str == NULL)
 		return (NULL);
-	i = 0;
-	while (i < len_s1)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (j < len_s2)
-	{
-		str[i + j] = s2[j];
-		j++;
-	}
-	str[i + j] = '\0';
+	if (s1)
+		ft_memcpy(str, s1, len_s1);
+	if (s2)
+		ft_memcpy(str + len_s1, s2, len_s2);
+
+	str[len_s1 + len_s2] = '\0';
+	free(s1);
 	return (str);
 }
 char	*ft_strchr(const char *s, int c)
@@ -72,20 +68,18 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_strdup(const char *s)
 {
 	char	*str;
-	int		i;
+	size_t	len;
 
-	str = ft_calloc(ft_strlen(s), 1);
-	if (str == NULL)
-	{
+	len = 0;
+	if (s)
+		len = ft_strlen(s);
+	else
+		len = 0;
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
 		return (NULL);
-	}
-	i = 0;
-	while (s[i] != '\0')
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
+	ft_memcpy(str,s, len);
+	str[len] = '\0';
 	return (str);
 }
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -95,6 +89,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	i;
 
 	i = 0;
+	result = 0;
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
 	result = nmemb * size;

@@ -6,11 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:15:41 by xhamzall          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/01/15 17:04:55 by xhamzall         ###   ########.fr       */
-=======
-/*   Updated: 2025/01/15 00:43:54 by xhamzall         ###   ########.fr       */
->>>>>>> f6578ae6c2a75f9ceff0a690b97de10f19daa1de
+/*   Updated: 2025/01/16 17:16:29 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
  #ifndef BUFFER_SIZE
- #define BUFFER_SIZE 100
+ #define BUFFER_SIZE 10
  #endif
 
 # include <stdio.h>
