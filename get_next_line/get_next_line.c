@@ -6,7 +6,7 @@
 /*   By: xhamzall <xhamzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:13:13 by xhamzall          #+#    #+#             */
-/*   Updated: 2025/01/17 00:08:46 by xhamzall         ###   ########.fr       */
+/*   Updated: 2025/01/17 01:17:27 by xhamzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ static char	*read_ln(int fd, char *str)
 	{
 		ft_bzero(buffer, BUFFER_SIZE + 1);
 		nbr_read = read(fd, buffer, BUFFER_SIZE);
-		if (nbr_read == -1)
-			return (free(buffer), free(str),NULL);
+		if (nbr_read == -1 && str)
+			return (free(buffer) ,NULL);
+		else if (nbr_read == -1)
+			return(free(buffer), free(str), NULL);
 		if (nbr_read == 0)
 			break;
 		temp = ft_strjoin(str, buffer);
@@ -86,19 +88,18 @@ static char	*prev (char *str)
 	char	*tmp;
 
 	i = 0;
-	// if(!str || str[i] == '\0')
-	// 	return (NULL);
+	if(!str || str[i] == '\0')
+		return (NULL);
 	if (!str)
 		return (NULL);
 	while (str[i] && str[i] != '\n' )
 		i++;
 	if (str[i] == '\0')
-		return(free(str), str = NULL, NULL);
+		return(free(str), NULL);
 	tmp = ft_strdup(&str[i+1]);
 	if (!tmp)//
-		return(free(str), str = NULL, NULL);
+		return(free(str), NULL);
 	free (str);
-	str = NULL;
 	return(tmp);
 }
 
@@ -106,8 +107,6 @@ char	*get_next_line(int fd)
 {
 	static char *str;
 	char *line;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	str = read_ln(fd, str);
 	if (!str)
 		return (NULL);
@@ -117,26 +116,26 @@ char	*get_next_line(int fd)
 	str = prev(str);
 	return (line);
 }
-int	main(void)
-{
-	int	fd;
-	char *line;
+// int	main(void)
+// {
+// 	int	fd;
+// 	char *line;
 
-	fd = open("txt.txt", O_RDWR);
-	// line = get_next_line(fd);
-	// printf("%s", line);
-	// free(line);
-	// close(fd);
-	// line = get_next_line(fd);
-	// printf("%s", line);
-	// free(line);
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	get_next_line(fd);
-	return (0);
-}
+// 	fd = open("txt.txt", O_RDWR);
+// 	// line = get_next_line(fd);
+// 	// printf("%s", line);
+// 	// free(line);
+// 	// close(fd);
+// 	// line = get_next_line(fd);
+// 	// printf("%s", line);
+// 	// free(line);
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	get_next_line(fd);
+// 	return (0);
+// }
 
